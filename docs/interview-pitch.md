@@ -6,7 +6,7 @@ Use these bullets and snippets during technical interviews, recruiter calls, or 
 
 ## 🎯 TL;DR Pitch (30 seconds)
 
-"I built a Spring Boot REST API called *Venue Ninja* that returns curated seat recommendations for popular venues like Madison Square Garden and Yankee Stadium. It’s fully documented with Swagger, deployable via Render, and showcases not just backend architecture but product-centric thinking. I designed it to demonstrate speed, structure, and creativity—all in under 72 hours."
+"I built a Spring Boot REST API called *Venue Ninja* that returns curated seat recommendations for popular venues like Madison Square Garden and Yankee Stadium. It’s fully documented with Swagger, deployable via Render, and showcases not just backend architecture but product-centric thinking. I designed it to demonstrate speed, structure, and creativity—all in under 48 hours."
 
 ---
 
@@ -39,7 +39,7 @@ Use these bullets and snippets during technical interviews, recruiter calls, or 
 
 ### 🚀 MVP Fast
 
-* Designed and coded in <72 hours
+* Designed and coded in <48 hours
 * Pushed to GitHub
 * Deployed and documented
 * Can be demoed with zero setup
