@@ -1,5 +1,5 @@
-# Use official Maven image to build the app
-FROM maven:3.8.6-openjdk-17 AS build
+# Use a verified working Maven image with JDK 17
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
 RUN ./mvnw clean package -DskipTests
