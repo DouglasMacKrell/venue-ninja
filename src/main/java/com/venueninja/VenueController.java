@@ -1,13 +1,26 @@
 package com.venueninja;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.venueninja.model.Venue;
+import com.venueninja.service.VenueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/venues")
 public class VenueController {
 
-    @GetMapping("/venues")
-    public String[] getVenues() {
-        return new String[] { "Madison Square Garden", "Red Rocks", "Barclays Center" };
+    @Autowired
+    private VenueService venueService;
+
+    @GetMapping
+    public List<Venue> getVenues() {
+        return venueService.getAllVenues();
+    }
+
+    @GetMapping("/{id}/recommendations")
+    public Venue getVenueById(@PathVariable String id) {
+        return venueService.getVenueById(id);
     }
 }
