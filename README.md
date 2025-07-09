@@ -11,7 +11,7 @@ A Java + Spring Boot REST API that delivers smart seat recommendations for iconi
 | Link | Description |
 | :--- | :--- |
 | 🚀 [Deployment Notes](./docs/deployment-notes.md) | How to deploy with Docker + Render |
-| 📝 [Interview Pitch](./docs/interview-pitch.md) | Talking points for interviews |
+| 📝 [Project Pitch](./docs/project-pitch.md) | The project's value, architecture, and design philosophy. |
 | 🧠 [Lessons Learned](./docs/lessons-learned.md) | How I fixed CORS and other issues |
 | ⚠️ [Known Issues](./docs/known-issues.md) | Current limitations and future work |
 | 📘 [Swagger Quickstart](./docs/swagger-quickstart.md) | How to use the API documentation |
@@ -124,7 +124,7 @@ Full deployment instructions (Dockerfile, build command, render.yaml) live in:
 
   * `swagger-quickstart.md`
   * `deployment-notes.md`
-  * `interview-pitch.md`
+  * `project-pitch.md`
   * `known-issues.md`
 
 ---
@@ -142,7 +142,7 @@ Full deployment instructions (Dockerfile, build command, render.yaml) live in:
 
 ## 🧠 Lessons Learned
 
-See `/docs/interview-pitch.md` for a reflection on the design process, technical choices, and value-driven tradeoffs.
+See [`/docs/project-pitch.md`](./docs/project-pitch.md) for a reflection on the design process, technical choices, and value-driven tradeoffs.
 
 ---
 
