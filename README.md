@@ -2,7 +2,7 @@
 
 A Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues like Madison Square Garden, Yankee Stadium, and more. Built as a showcase project to demonstrate full-stack engineering skills, rapid deployment practices, and product empathy.
 
-**🌐 Live demo**: [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+**[Live Client](https://venueninja.netlify.app)** | **[Live API Docs (Swagger)](https://venue-ninja.onrender.com/swagger-ui/index.html)**
 
 ---
 
@@ -15,6 +15,7 @@ A Java + Spring Boot REST API that delivers smart seat recommendations for iconi
 | 🧠 [Lessons Learned](./docs/lessons-learned.md) | How I fixed CORS and other issues |
 | ⚠️ [Known Issues](./docs/known-issues.md) | Current limitations and future work |
 | 📘 [Swagger Quickstart](./docs/swagger-quickstart.md) | How to use the API documentation |
+| 🛰️ [Live API Endpoint](https://venue-ninja.onrender.com/venues) | The base URL for the deployed API |
 
 ---
 
