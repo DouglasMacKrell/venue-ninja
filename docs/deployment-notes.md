@@ -24,13 +24,12 @@ Create a new **Web Service** and connect your GitHub repo.
 ### 3. Configure Render
 
 * **Name:** venue-ninja
-* **Environment:** Java
-* **Build Command:** `./mvnw clean install`
-* **Start Command:** `./mvnw spring-boot:run`
+* **Environment:** Docker
+* **Dockerfile Location:** at repo root
 * **Instance Type:** Free or Starter is fine
 * **Region:** US (if targeting US interviews)
 
-Render auto-detects Java and will assign a public URL like:
+Render will build your container using the provided Dockerfile and Maven commands. The backend will be accessible at a URL like:
 
 ```
 https://venue-ninja.onrender.com
@@ -38,11 +37,13 @@ https://venue-ninja.onrender.com
 
 ### 4. Test Public API
 
-After the build completes:
+After the build completes and logs show “Started VenueNinjaApplication,” visit:
 
 * `GET /venues` → [https://venue-ninja.onrender.com/venues](https://venue-ninja.onrender.com/venues)
-* `GET /venues/{id}` → try msg, citi, yankee
-* Swagger: [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+* `GET /venues/{id}` → try msg, citi, mcg
+* Swagger UI: [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+
+If these load successfully, your deployment was a total win 🥷✅
 
 ---
 
@@ -74,9 +75,10 @@ Build with:
 
 ## 💡 Deployment Tips
 
-* Render and Railway both support auto-deploy from GitHub on commit
-* Use `.env` or hardcoded API base URLs for quick testing
-* Static hosting is free + fast—no backend needed for the frontend
+* Render supports auto-deploy from GitHub on commit
+* Keep `application.properties` empty or minimal for container setups
+* Test endpoints before interview using cURL or Swagger UI
+* If frontend uses fetch, ensure CORS is handled if deployed separately
 
 ---
 
@@ -85,7 +87,8 @@ Build with:
 * Add logging via Spring Boot Actuator (optional)
 * Add favicon & SEO metadata if doing frontend
 * Use a custom domain if desired
+* Document `.env` usage if securing future endpoints
 
 ---
 
-Need help? DM @DouglasMacKrell on LinkedIn or scream into the wind at MSG until a ninja appears 🥷💨
+Need help? DM @DouglasMacKrell on LinkedIn or whisper your service URL into the void. A ninja will answer. 🥷💨

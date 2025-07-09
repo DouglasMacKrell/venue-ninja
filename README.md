@@ -2,6 +2,8 @@
 
 A Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues like Madison Square Garden, Yankee Stadium, and more. Built as a showcase project to demonstrate full-stack engineering skills, rapid deployment practices, and product empathy.
 
+**🌐 Live demo**: [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+
 ---
 
 ## 🔥 What It Does
@@ -11,7 +13,7 @@ This project exposes RESTful endpoints that:
 * List supported venues
 * Return hardcoded seat recommendations per venue (categorized by value, section, and tips)
 
-It’s powered by Spring Boot, designed for Swagger visibility, and ready for deployment with mock data that mirrors real-world ticketing logic.
+It’s powered by Spring Boot, designed for Swagger visibility, and deployed on Render with mock data that mirrors real-world ticketing logic.
 
 ---
 
@@ -19,9 +21,10 @@ It’s powered by Spring Boot, designed for Swagger visibility, and ready for de
 
 * ✅ Built from scratch in 48 hours
 * 🎟️ Reflects real-world ticketing UX patterns
-* ⚡ Zero dependencies = fast load and deploy
+* ⚡ Zero DB dependencies = fast load and deploy
 * 📘 Swagger-ready for demo & test
 * 🧠 Highlights engineering + product thinking
+* 🛰️ Deployed live with Docker and Render
 
 ---
 
@@ -29,9 +32,9 @@ It’s powered by Spring Boot, designed for Swagger visibility, and ready for de
 
 * Java 17
 * Spring Boot
-* In-memory data store
+* In-memory mock data
 * Swagger UI via springdoc-openapi
-* GitHub + Render for deployment (optional frontend: Railway)
+* GitHub + Render for deployment
 
 ---
 
@@ -75,7 +78,7 @@ Example response:
 
 ```bash
 # Clone and enter project
-$ git clone https://github.com/YOUR_USERNAME/venue-ninja.git
+$ git clone https://github.com/DouglasMacKrell/venue-ninja.git
 $ cd venue-ninja
 
 # Run with Maven
@@ -91,16 +94,20 @@ Visit:
 
 ## 🚀 Deployment
 
-This project can be deployed with Render as a backend-only project. A static frontend (optional) can be paired and deployed via Railway.
+This project is deployed live via [Render](https://render.com):
 
-Deployment instructions can be found in `/docs/deployment-notes.md`
+▶️ [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+
+Full deployment instructions (Dockerfile, build command, render.yaml) live in:
+
+* `/docs/deployment-notes.md`
 
 ---
 
 ## 📚 Documentation
 
-* Full Swagger UI is enabled
-* Additional docs live in `/docs/`
+* Full Swagger UI enabled (see Swagger Quickstart)
+* Additional docs live in `/docs/`:
 
   * `swagger-quickstart.md`
   * `deployment-notes.md`
@@ -113,9 +120,10 @@ Deployment instructions can be found in `/docs/deployment-notes.md`
 
 * Designed with real-world user experience in mind
 * Clear separation of concerns (controller, service, model)
-* Deployed within 72 hours
+* Deployed in under 48 hours
 * Spring Boot + Swagger integration from scratch
-* Mock data simulates realistic decision making without live API reliance
+* Uses hardcoded mock data to simulate real-world ticketing recommendations
+* Swagger docs serve as live demo interface during interviews
 
 ---
 
