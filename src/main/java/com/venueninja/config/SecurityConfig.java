@@ -18,10 +18,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(requests -> requests
-                        .anyRequest().permitAll());
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(requests -> requests
+                .anyRequest().permitAll());
 
         return http.build();
     }
@@ -30,7 +30,14 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Arrays.asList("http://localhost:5175", "https://venue-ninja.onrender.com"));
+        
+        // 👇 Add all frontend origins here
+        config.setAllowedOrigins(Arrays.asList(
+            "http://localhost:5175", 
+            "https://venue-ninja.onrender.com", 
+            "https://venueninja.netlify.app" 
+        ));
+
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setMaxAge(3600L);
