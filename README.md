@@ -6,6 +6,18 @@ A Java + Spring Boot REST API that delivers smart seat recommendations for iconi
 
 ---
 
+##  QUICKLINKS
+
+| Link | Description |
+| :--- | :--- |
+| 🚀 [Deployment Notes](./docs/deployment-notes.md) | How to deploy with Docker + Render |
+| 📝 [Interview Pitch](./docs/interview-pitch.md) | Talking points for interviews |
+| 🧠 [Lessons Learned](./docs/lessons-learned.md) | How I fixed CORS and other issues |
+| ⚠️ [Known Issues](./docs/known-issues.md) | Current limitations and future work |
+| 📘 [Swagger Quickstart](./docs/swagger-quickstart.md) | How to use the API documentation |
+
+---
+
 ## 🔥 What It Does
 
 This project exposes RESTful endpoints that:
