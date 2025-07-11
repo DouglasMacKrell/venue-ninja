@@ -8,15 +8,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Fetch Latest Render Deployment Status
+        id: render_status
+        run: |
+          response=$(curl --silent --request GET \
+            --url "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys?limit=1" \
+            --header "Accept: application/json" \
+            --header "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}")
+          status=$(echo "$response" | jq -r '.[0].deploy.status')
+          echo "status=$status" >> $GITHUB_OUTPUT
       - name: Generate Badge
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-        run: npx render-status-badge > badge-url.txt
+        id: badge
+        run: |
+          status="${{ steps.render_status.outputs.status }}"
+          color="lightgrey"
+          if [[ "$status" == "live" ]]; then
+            color="success"
+          elif [[ "$status" == "build_in_progress" || "$status" == "update_in_progress" ]]; then
+            color="yellow"
+          elif [[ "$status" == "failed" || "$status" == "build_failed" || "$status" == "canceled" ]]; then
+            color="red"
+          fi
+          # Replace underscores with spaces for the badge message
+          message=$(echo "$status" | sed 's/_/ /g')
+          badge_url="https://img.shields.io/badge/Render%20Deploy-$message-$color?style=for-the-badge&logo=render"
+          echo "url=$badge_url" >> $GITHUB_OUTPUT
       - name: Update README
         run: |
-          badge_url=$(cat badge-url.txt)
-          sed -i "s|<! -- RENDER_BADGE -->.*|<!-- RENDER_BADGE -->\n[![Render Status]($badge_url)]($(cat badge-url.txt))|" README.md
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit -am "chore: Update Render status badge" && git push || echo "No changes to commit" 
+          badge_url="${{ steps.badge.outputs.url }}"
+          sed -i "s|<! -- RENDER_BADGE -->.*|<!-- RENDER_BADGE -->\n[![Render Status]($badge_url)](https://dashboard.render.com/web/${{ secrets.RENDER_SERVICE_ID }})|" README.md
+          # Only commit and push if there are changes
+          if ! git diff --quiet README.md; then
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git commit -am "chore: Update Render status badge"
+            git push
+          else
+            echo "No status change to commit."
+          fi 
