@@ -1,5 +1,8 @@
 # Venue Ninja 🎟️🗡️
 
+<!-- RENDER_BADGE -->
+[![Render Status](https://img.shields.io/badge/Render-passing-brightgreen?logo=render)](https://github.com/nia-cloud-official/render-status)
+
 A Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues like Madison Square Garden, Yankee Stadium, and more. Built as a showcase project to demonstrate full-stack engineering skills, rapid deployment practices, and product empathy.
 
 **[Live Client](https://venueninja.netlify.app)** | **[Live API Docs (Swagger)](https://venue-ninja.onrender.com/swagger-ui/index.html)**
