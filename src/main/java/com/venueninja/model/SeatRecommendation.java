@@ -1,13 +1,20 @@
 package com.venueninja.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class SeatRecommendation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String section;
     private String category;
     private String reason;
     private String estimatedPrice;
     private String tip;
 
-    // Constructors
     public SeatRecommendation() {}
 
     public SeatRecommendation(String section, String category, String reason, String estimatedPrice, String tip) {
@@ -19,6 +26,9 @@ public class SeatRecommendation {
     }
 
     // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
     public String getSection() { return section; }
     public void setSection(String section) { this.section = section; }
 

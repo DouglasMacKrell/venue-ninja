@@ -1,13 +1,20 @@
 package com.venueninja.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 
+@Entity
 public class Venue {
+
+    @Id
     private String id;
+
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "venue_id") // Foreign key in seat_recommendation
     private List<SeatRecommendation> recommendations;
 
-    // Constructors
     public Venue() {}
 
     public Venue(String id, String name, List<SeatRecommendation> recommendations) {
