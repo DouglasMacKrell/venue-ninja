@@ -82,6 +82,13 @@
             <version>42.7.3</version>
         </dependency>
 
+        <!-- 🤫 DotENV support for Spring -->
+        <dependency>
+            <groupId>me.paulschwarz</groupId>
+            <artifactId>spring-dotenv</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <!-- ⚒️ Build Plugins -->
