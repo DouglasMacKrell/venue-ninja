@@ -1,13 +1,18 @@
-# Environment variables
+# Environment
 .env
+
+# IDE
+.idea/
+*.iml
+.vscode/
 
 # Maven
 /target/
 
-# Log files
-*.log
+# Node
+/node_modules/
+npm-debug.log
+yarn-error.log
 
-# IDE files
-.idea/
-*.iml
-.vscode/
+# Logs
+*.log
