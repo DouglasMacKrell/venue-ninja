@@ -1,3 +1,5 @@
+![Venue Ninja Header](public/images/venue-ninja-headder.png)
+
 # Venue Ninja 🎟️🗡️
 
 <!-- RENDER_BADGE -->
