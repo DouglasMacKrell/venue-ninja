@@ -29,7 +29,7 @@ Venue Ninja has evolved from a simple in-memory demo to a **production-grade app
 
 2. **Database Credentials**
    ```
-   Host: dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com
+   Host: your_database_host_here
    Port: 5432
    Database: venue_ninja_db
    Username: venue_ninja_db_user
@@ -38,7 +38,7 @@ Venue Ninja has evolved from a simple in-memory demo to a **production-grade app
 
 3. **Connection String**
    ```
-   postgresql://venue_ninja_db_user:[PASSWORD]@dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com:5432/venue_ninja_db
+   postgresql://your_user:[PASSWORD]@your_host:5432/your_database
    ```
 
 ---
@@ -60,7 +60,7 @@ DB_PASSWORD=8gCV7weUED662qAjWFdmxqhyqa4ZCwaZ
 
 #### Option 2: Single DATABASE_URL
 ```bash
-DATABASE_URL=jdbc:postgresql://dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com:5432/venue_ninja_db?sslmode=require
+DATABASE_URL=jdbc:postgresql://your_host:5432/your_database?sslmode=require
 ```
 
 ### Why Individual Variables?
@@ -153,10 +153,10 @@ In the **Environment** tab, add:
 
 ```bash
 # Database Configuration
-DB_HOST=dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com
+DB_HOST=your_database_host_here
 DB_PORT=5432
 DB_NAME=venue_ninja_db
-DB_USER=venue_ninja_db_user
+DB_USER=your_database_user_here
 DB_PASSWORD=your_actual_password_here
 
 # Application Configuration

@@ -215,14 +215,14 @@ export DB_PASSWORD=your_password
 
 ```bash
 # Database Configuration
-DB_HOST=dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com
+DB_HOST=your_database_host_here
 DB_PORT=5432
 DB_NAME=venue_ninja_db
 DB_USER=venue_ninja_db_user
 DB_PASSWORD=your_actual_password_here
 
 # Or use single DATABASE_URL
-DATABASE_URL=jdbc:postgresql://dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com:5432/venue_ninja_db?sslmode=require
+DATABASE_URL=jdbc:postgresql://your_host:5432/your_database?sslmode=require
 ```
 
 ### Docker Deployment
