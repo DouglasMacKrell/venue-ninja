@@ -33,12 +33,12 @@ Venue Ninja has evolved from a simple in-memory demo to a **production-grade app
    Port: 5432
    Database: venue_ninja_db
    Username: venue_ninja_db_user
-   Password: 8gCV7weUED662qAjWFdmxqhyqa4ZCwaZ
+   Password: [REDACTED - Use environment variable DB_PASSWORD]
    ```
 
 3. **Connection String**
    ```
-   postgresql://venue_ninja_db_user:8gCV7weUED662qAjWFdmxqhyqa4ZCwaZ@dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com:5432/venue_ninja_db
+   postgresql://venue_ninja_db_user:[PASSWORD]@dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com:5432/venue_ninja_db
    ```
 
 ---
@@ -157,7 +157,7 @@ DB_HOST=dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com
 DB_PORT=5432
 DB_NAME=venue_ninja_db
 DB_USER=venue_ninja_db_user
-DB_PASSWORD=8gCV7weUED662qAjWFdmxqhyqa4ZCwaZ
+DB_PASSWORD=your_actual_password_here
 
 # Application Configuration
 SPRING_PROFILES_ACTIVE=production

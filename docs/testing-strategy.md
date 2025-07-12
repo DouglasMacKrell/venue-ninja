@@ -607,7 +607,7 @@ class ExternalDatabaseConnectionTest {
         // Test connection to Render PostgreSQL database
         String url = "jdbc:postgresql://dpg-d1ok8ek9c44c73fo8u9g-a.virginia-postgres.render.com:5432/venue_ninja_db";
         String user = "venue_ninja_db_user";
-        String password = "8gCV7weUED662qAjWFdmxqhyqa4ZCwaZ";
+        String password = System.getenv("DB_PASSWORD");
         
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             // Assert connection is valid
