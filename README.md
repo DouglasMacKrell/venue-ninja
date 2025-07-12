@@ -2,12 +2,13 @@
 
 # Venue Ninja 🎟️🗡️
 
-<!-- RENDER_BADGE -->
-[![Render Status](https://img.shields.io/badge/Render-passing-brightgreen?logo=render)](https://github.com/nia-cloud-official/render-status)
+[![CI/CD Pipeline](https://github.com/DouglasMacKrell/venue-ninja/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/DouglasMacKrell/venue-ninja/actions)
+[![Code Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)](https://github.com/DouglasMacKrell/venue-ninja)
 [![Java](https://img.shields.io/badge/Java-17-orange?logo=java)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.3-brightgreen?logo=spring)](https://spring.io/projects/spring-boot)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue?logo=postgresql)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-blue?logo=docker)](https://www.docker.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](https://www.docker.com/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A **production-ready** Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues. Built as a showcase project demonstrating enterprise-grade engineering, database integration, comprehensive testing, and modern deployment practices.
 

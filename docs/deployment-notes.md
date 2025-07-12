@@ -78,30 +78,21 @@ The application supports both approaches, but **individual variables are recomme
 
 ### Dockerfile
 
-```dockerfile
-FROM openjdk:17-jdk-slim
+See the production-ready [Dockerfile](../Dockerfile) in the root directory for a multi-stage build with:
+- **Security**: Non-root user execution
+- **Optimization**: Multi-stage build for smaller image size
+- **Health Checks**: Built-in health monitoring
+- **Best Practices**: Alpine Linux base image
 
-WORKDIR /app
+```bash
+# Build the Docker image
+docker build -t venue-ninja:latest .
 
-# Copy Maven wrapper and pom.xml
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+# Run the container
+docker run -d --name venue-ninja -p 8080:8080 venue-ninja:latest
 
-# Make mvnw executable
-RUN chmod +x mvnw
-
-# Download dependencies
-RUN ./mvnw dependency:go-offline -B
-
-# Copy source code
-COPY src src
-
-# Build the application
-RUN ./mvnw clean package -DskipTests
-
-# Run with production profile
-CMD ["java", "-jar", "-Dspring.profiles.active=production", "target/venueninja-0.0.1-SNAPSHOT.jar"]
+# Test health endpoint
+curl http://localhost:8080/health
 ```
 
 ### Build Configuration

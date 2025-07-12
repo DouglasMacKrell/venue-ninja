@@ -1,0 +1,42 @@
+# Maven
+target/
+!target/*.jar
+!target/*.war
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test files
+src/test/
+
+# Build tools
+.mvn/
+mvnw
+mvnw.cmd 
