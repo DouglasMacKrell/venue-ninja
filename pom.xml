@@ -82,6 +82,13 @@
             <version>42.7.3</version>
         </dependency>
 
+        <!-- 💾 H2 Database for Testing -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <!-- ⚒️ Build Plugins -->
