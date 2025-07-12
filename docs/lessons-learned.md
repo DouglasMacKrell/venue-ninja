@@ -1,6 +1,6 @@
 # 🥷 Lessons Learned: Fixing CORS in Spring Boot with Vite Frontend
 
-This document outlines the key lessons learned while troubleshooting a `CORS` issue between a Spring Boot backend and a Vite-powered React frontend.
+This document outlines the key lessons learned while troubleshooting a `CORS` issue between a Spring Boot backend and a Vite-powered React frontend, as well as testing improvements and null safety practices.
 
 ---
 
@@ -36,7 +36,7 @@ Add:
 
 ```java
 @EnableWebSecurity
-````
+```
 
 ---
 
@@ -112,12 +112,137 @@ public class SecurityConfig {
 
 ---
 
+## 🧪 Testing Improvements & Null Safety
+
+### The Challenge
+
+During comprehensive test suite development, we encountered numerous static analysis warnings about potential null pointer access, particularly with:
+- `response.getBody()` method calls
+- `response.getHeaders().getContentType()` method calls
+- Property access on potentially null objects
+
+### ✅ The Solution: Null Safety Patterns
+
+#### 1. Store Results in Variables After Null Checks
+
+**Problem:**
+```java
+assertThat(response.getHeaders().getContentType()).isNotNull();
+assertThat(response.getHeaders().getContentType().toString()).contains("application/json");
+```
+
+**Solution:**
+```java
+assertThat(response.getHeaders().getContentType()).isNotNull();
+var contentType = response.getHeaders().getContentType();
+if (contentType != null) {
+    assertThat(contentType.toString()).contains("application/json");
+}
+```
+
+#### 2. Wrap Property Access in Null Checks
+
+**Problem:**
+```java
+assertThat(venue).isNotNull();
+assertThat(venue.getId()).isEqualTo("msg");
+```
+
+**Solution:**
+```java
+assertThat(venue).isNotNull();
+if (venue != null) {
+    assertThat(venue.getId()).isEqualTo("msg");
+}
+```
+
+#### 3. Use Suppression Annotations for Intentional Null Testing
+
+**Problem:**
+```java
+String venueId = null;
+when(venueRepository.findById(null)).thenReturn(Optional.empty());
+```
+
+**Solution:**
+```java
+@SuppressWarnings("all")
+String venueId = null;
+when(venueRepository.findById(null)).thenReturn(Optional.empty());
+```
+
+### 🏗️ Test Suite Architecture
+
+We implemented a comprehensive testing strategy with:
+
+1. **Error Handling Tests** (`ErrorHandlingTest.java`)
+   - Malformed inputs, SQL injection, XSS, path traversal
+   - Concurrent request handling
+
+2. **Performance Tests** (`PerformanceTest.java`)
+   - Load testing, response time validation
+   - Memory usage monitoring
+
+3. **Regression Tests** (`RegressionTestSuite.java`)
+   - Core functionality validation
+   - Data structure consistency checks
+
+4. **Test Data Builders** (`TestDataBuilder.java`)
+   - Consistent test data creation
+   - Reusable test scenarios
+
+### 📊 Coverage and Quality Gates
+
+Implemented JaCoCo coverage reporting with minimum thresholds:
+- **Line Coverage**: 80% minimum
+- **Branch Coverage**: 70% minimum
+
+```xml
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.11</version>
+    <executions>
+        <execution>
+            <id>check</id>
+            <goals>
+                <goal>check</goal>
+            </goals>
+            <configuration>
+                <rules>
+                    <rule>
+                        <element>BUNDLE</element>
+                        <limits>
+                            <limit>
+                                <counter>LINE</counter>
+                                <value>COVEREDRATIO</value>
+                                <minimum>0.80</minimum>
+                            </limit>
+                            <limit>
+                                <counter>BRANCH</counter>
+                                <value>COVEREDRATIO</value>
+                                <minimum>0.70</minimum>
+                            </limit>
+                        </limits>
+                    </rule>
+                </rules>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+---
+
 ## 🔍 Summary
 
 | Issue                              | Fix                                                     |
 | ---------------------------------- | ------------------------------------------------------- |
 | Missing `@EnableWebSecurity`       | Added the annotation to activate custom security config |
 | Incorrect port (`5173` vs. `5175`) | Corrected to match frontend's actual port               |
+| Null pointer access warnings       | Implemented null safety patterns and suppression        |
+| Limited test coverage              | Added comprehensive test suites with quality gates      |
+| Static analysis compliance         | Used proper null checks and variable storage            |
 
 ---
 
@@ -126,3 +251,6 @@ public class SecurityConfig {
 * **Spring Boot won't use your security config unless you tell it to!**
 * **CORS is *strict*. One character off and you're toast.**
 * **Don't trust defaults when debugging a security issue. Be explicit.**
+* **Static analysis tools are your friends - embrace null safety patterns.**
+* **Comprehensive testing requires multiple test categories and proper data management.**
+* **Quality gates ensure code quality doesn't regress over time.**
