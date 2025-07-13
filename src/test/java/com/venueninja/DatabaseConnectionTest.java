@@ -40,12 +40,13 @@ class DatabaseConnectionTest {
             System.out.println("Connected to: " + databaseProductName + " " + databaseProductVersion);
             
             // Verify we're using the expected database type
-            if (System.getProperty("spring.profiles.active", "").contains("test")) {
+            String activeProfile = System.getProperty("spring.profiles.active", "");
+            if (activeProfile.contains("test") || activeProfile.isEmpty()) {
                 assertTrue(databaseProductName.toLowerCase().contains("h2"), 
-                          "Test profile should use H2 database");
+                          "Test profile should use H2 database, but found: " + databaseProductName);
             } else {
                 assertTrue(databaseProductName.toLowerCase().contains("postgresql"), 
-                          "Production profile should use PostgreSQL database");
+                          "Production profile should use PostgreSQL database, but found: " + databaseProductName);
             }
         }
     }
