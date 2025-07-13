@@ -55,16 +55,14 @@
         <module name="WhitespaceAround"/>
         <module name="ModifierOrder"/>
         <module name="RedundantModifier"/>
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
     </module>
 
-    <!-- Modifier Checks -->
-
     <!-- Checks for blocks -->
-    <module name="AvoidNestedBlocks"/>
-    <module name="EmptyBlock"/>
-    <module name="LeftCurly"/>
-    <module name="NeedBraces"/>
-    <module name="RightCurly"/>
 
     <!-- Checks for common coding problems -->
     <module name="EmptyStatement"/>
