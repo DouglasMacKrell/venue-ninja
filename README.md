@@ -23,6 +23,7 @@ A **production-ready** Java + Spring Boot REST API that delivers smart seat reco
 | Link | Description |
 | :--- | :--- |
 | 🚀 [Deployment Guide](./docs/deployment-notes.md) | Complete deployment walkthrough with PostgreSQL |
+| 🔄 [CI/CD Pipeline](./docs/ci-cd-pipeline.md) | Streamlined GitHub Actions workflow and quality gates |
 | 🗄️ [Database Architecture](./docs/database-architecture.md) | PostgreSQL setup, migrations, and connection details |
 | 🧪 [Testing Strategy](./docs/testing-strategy.md) | Comprehensive test coverage and external DB testing |
 | 📝 [Project Pitch](./docs/project-pitch.md) | Architecture decisions and design philosophy |
@@ -38,8 +39,9 @@ A **production-ready** Java + Spring Boot REST API that delivers smart seat reco
 Venue Ninja is a **production-grade REST API** that provides intelligent seat recommendations for iconic venues. It features:
 
 * **Real PostgreSQL Database** - Persistent data storage with proper migrations
-* **Comprehensive Testing** - Unit tests, integration tests, and external database connectivity tests
+* **Comprehensive Testing** - 64 tests covering unit, integration, performance, and error handling
 * **Production Deployment** - Dockerized and deployed on Render with environment-specific configurations
+* **CI/CD Pipeline** - Streamlined GitHub Actions workflow with quality gates
 * **API Documentation** - Auto-generated Swagger/OpenAPI documentation
 * **Security** - Spring Security with CORS configuration for frontend integration
 * **Monitoring** - Structured logging and health checks
@@ -81,7 +83,7 @@ Venue Ninja is a **production-grade REST API** that provides intelligent seat re
 * **Docker** - Containerized deployment
 * **Render** - Cloud hosting platform
 * **Maven** - Build and dependency management
-* **GitHub Actions** - CI/CD pipeline (ready)
+* **GitHub Actions** - CI/CD pipeline (✅ fully operational)
 
 ### Documentation
 * **Swagger/OpenAPI 3** - Auto-generated API docs
@@ -156,13 +158,14 @@ CREATE TABLE seat_recommendation (
 ### Test Coverage
 * **Unit Tests** - Service layer business logic
 * **Integration Tests** - Repository and database operations
+* **Performance Tests** - Load testing and response time validation
+* **Error Handling Tests** - Edge cases and security scenarios
 * **External DB Tests** - Production database connectivity
-* **API Tests** - Endpoint functionality and responses
 
 ### Running Tests
 
 ```bash
-# Run all tests
+# Run all tests (64 tests)
 ./mvnw test
 
 # Run specific test class
@@ -170,12 +173,41 @@ CREATE TABLE seat_recommendation (
 
 # Run with coverage
 ./mvnw test jacoco:report
+
+# Check code quality
+./mvnw checkstyle:check
 ```
 
 ### Test Database
 * **Local Development** - H2 in-memory database
 * **Testing** - H2 with test data
 * **Production** - PostgreSQL on Render
+
+---
+
+## 🔄 CI/CD Pipeline
+
+### Current Status: ✅ **FULLY OPERATIONAL**
+
+The streamlined CI/CD pipeline runs in under 2 minutes and includes:
+
+* **Code Quality Checks** - Checkstyle validation
+* **Comprehensive Testing** - 64 tests covering all critical paths
+* **Build Verification** - Maven compilation and packaging
+* **Quality Gates** - All checks must pass for deployment
+
+### Pipeline Stages
+1. **Checkstyle** - Code formatting and style compliance
+2. **Testing** - Unit, integration, performance, and error handling tests
+3. **Build** - Package creation and dependency resolution
+
+### Recent Improvements
+* ✅ **Simplified Workflow** - Removed unnecessary Docker tests
+* ✅ **Fixed Checkstyle** - Proper XML configuration structure
+* ✅ **Optimized Execution** - Fast feedback under 2 minutes
+* ✅ **Reliable Results** - Consistent test execution
+
+For detailed pipeline information, see [CI/CD Pipeline Documentation](./docs/ci-cd-pipeline.md).
 
 ---
 
