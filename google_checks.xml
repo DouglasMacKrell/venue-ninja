@@ -53,11 +53,11 @@
         <module name="TypecastParenPad"/>
         <module name="WhitespaceAfter"/>
         <module name="WhitespaceAround"/>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
     </module>
 
     <!-- Modifier Checks -->
-    <module name="ModifierOrder"/>
-    <module name="RedundantModifier"/>
 
     <!-- Checks for blocks -->
     <module name="AvoidNestedBlocks"/>
