@@ -9,6 +9,8 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue?logo=postgresql)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<!-- RENDER_BADGE -->
+[![Render Status](https://img.shields.io/badge/Render%20Deploy-unknown-lightgrey?style=for-the-badge&logo=render)](https://dashboard.render.com/web/)
 
 A **production-ready** Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues. Built as a showcase project demonstrating enterprise-grade engineering, database integration, comprehensive testing, and modern deployment practices.
 
