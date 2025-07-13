@@ -14,7 +14,7 @@ jobs:
           response=$(curl --silent --request GET \
             --url "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys?limit=1" \
             --header "Accept: application/json" \
-            --header "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}")
+            --header "Authorization: Bearer ${{ secrets.RENDER_TOKEN }}")
           status=$(echo "$response" | jq -r '.[0].deploy.status')
           echo "status=$status" >> $GITHUB_OUTPUT
       - name: Generate Badge
