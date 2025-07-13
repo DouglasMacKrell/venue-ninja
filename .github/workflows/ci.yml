@@ -42,7 +42,7 @@ jobs:
       run: ./mvnw clean package -DskipTests
     
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: venue-ninja-jar
         path: target/venueninja-0.0.1-SNAPSHOT.jar
