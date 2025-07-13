@@ -84,7 +84,7 @@ jobs:
       run: |
         docker run -d --name venue-ninja-test -p 8080:8080 venue-ninja:latest
         sleep 90
-        curl -f http://localhost:8080/health || exit 1
+        curl -f http://localhost:8080/health || (docker logs venue-ninja-test; exit 1)
         docker stop venue-ninja-test
         docker rm venue-ninja-test
 

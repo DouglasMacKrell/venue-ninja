@@ -28,14 +28,13 @@
         <module name="ParameterName"/>
         <module name="StaticVariableName"/>
         <module name="TypeName"/>
-    </module>
-
-    <!-- Checks for imports -->
-    <module name="AvoidStarImport"/>
-    <module name="IllegalImport"/>
-    <module name="RedundantImport"/>
-    <module name="UnusedImports">
-        <property name="processJavadoc" value="false"/>
+        <!-- Import checks -->
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="false"/>
+        </module>
     </module>
 
     <!-- Checks for Size Violations. -->
