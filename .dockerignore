@@ -37,6 +37,6 @@ docs/
 src/test/
 
 # Build tools
-.mvn/
-mvnw
-mvnw.cmd 
+# .mvn/ - Required for Maven wrapper
+# mvnw - Required for Maven wrapper  
+# mvnw.cmd - Required for Maven wrapper 
