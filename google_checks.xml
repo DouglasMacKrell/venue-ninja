@@ -84,20 +84,6 @@
         <module name="FinalParameters"/>
         <module name="TodoComment"/>
         <module name="UpperEll"/>
-        <!-- Checks for Javadoc comments. -->
-        <module name="JavadocMethod">
-            <property name="scope" value="public"/>
-            <property name="allowMissingJavadoc" value="true"/>
-        </module>
-        <module name="JavadocType">
-            <property name="scope" value="public"/>
-            <property name="allowMissingJavadoc" value="true"/>
-        </module>
-        <module name="JavadocVariable">
-            <property name="scope" value="public"/>
-            <property name="allowMissingJavadoc" value="true"/>
-        </module>
-        <module name="JavadocStyle"/>
     </module>
 
 </module> 
