@@ -10,7 +10,8 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 <!-- RENDER_BADGE -->
-[![API Uptime](https://img.shields.io/uptimerobot/status/m800937975?style=for-the-badge&label=API%20Uptime)](https://stats.uptimerobot.com/etkFEsFW7F)
+[![API Uptime](https://img.shields.io/uptimerobot/status/{{UPTIME_ROBOT_API_KEY}}?style=for-the-badge&label=API%20Uptime)](https://stats.uptimerobot.com/etkFEsFW7F)
+
 
 
 
