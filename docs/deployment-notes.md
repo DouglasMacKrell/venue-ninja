@@ -12,7 +12,7 @@ Venue Ninja has evolved from a simple in-memory demo to a **production-grade app
 - ✅ **Comprehensive Testing** - Unit, integration, and external DB tests
 - ✅ **Production Security** - SSL connections, environment variables
 - ✅ **Modern DevOps** - Docker containerization, cloud deployment
-- ✅ **Monitoring Ready** - Health checks, structured logging
+- ✅ **Monitoring Ready** - Health checks, structured logging, Uptime Robot integration
 - ✅ **CI/CD Pipeline** - Automated testing and quality checks
 
 ---
@@ -198,6 +198,25 @@ Run the external database test locally:
 ```
 
 This test validates:
+
+### 4. Uptime Robot Monitoring
+
+The application is monitored using **Uptime Robot** for production uptime tracking:
+
+- **Monitor ID**: `m800937975-31ce25bfe5c7a16894e182d7`
+- **Status Page**: [https://stats.uptimerobot.com/etkFEsFW7F](https://stats.uptimerobot.com/etkFEsFW7F)
+- **Badge**: Displayed in README showing real-time API status
+
+**Monitoring Features**:
+- ✅ **Real-time uptime tracking** - 24/7 API availability monitoring
+- ✅ **Public status page** - Transparent uptime reporting
+- ✅ **Automated alerts** - Notifications for downtime events
+- ✅ **Performance metrics** - Response time and availability statistics
+
+**Integration**:
+- The Uptime Robot badge in the README automatically updates based on API status
+- Public status page provides transparency for API users
+- Monitoring helps ensure production reliability and quick issue detection
 - ✅ Database connectivity
 - ✅ SSL configuration
 - ✅ Environment variable parsing

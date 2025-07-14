@@ -32,6 +32,7 @@ A **production-ready** Java + Spring Boot REST API that delivers smart seat reco
 | ⚠️ [Known Issues](./docs/known-issues.md) | Current limitations and roadmap |
 | 📘 [Swagger Documentation](./docs/swagger-quickstart.md) | API documentation and testing |
 | 🛰️ [Live API](https://venue-ninja.onrender.com/venues) | Production API endpoint |
+| 📊 [API Status Page](https://stats.uptimerobot.com/etkFEsFW7F) | Real-time uptime monitoring |
 
 ---
 
@@ -45,7 +46,7 @@ Venue Ninja is a **production-grade REST API** that provides intelligent seat re
 * **CI/CD Pipeline** - Streamlined GitHub Actions workflow with quality gates
 * **API Documentation** - Auto-generated Swagger/OpenAPI documentation
 * **Security** - Spring Security with CORS configuration for frontend integration
-* **Monitoring** - Structured logging and health checks
+* **Monitoring** - Structured logging, health checks, and Uptime Robot integration
 
 ---
 

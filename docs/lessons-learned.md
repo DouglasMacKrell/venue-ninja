@@ -1,6 +1,6 @@
 # 🥷 Lessons Learned: Fixing CORS in Spring Boot with Vite Frontend
 
-This document outlines the key lessons learned while troubleshooting a `CORS` issue between a Spring Boot backend and a Vite-powered React frontend, as well as testing improvements, null safety practices, and CI/CD pipeline optimization.
+This document outlines the key lessons learned while troubleshooting a `CORS` issue between a Spring Boot backend and a Vite-powered React frontend, as well as testing improvements, null safety practices, CI/CD pipeline optimization, and production monitoring setup.
 
 ---
 
@@ -395,6 +395,12 @@ spring.datasource.url=jdbc:postgresql://host:5432/db?sslmode=require
 * **Updated documentation reflects current state**
 * **Lessons learned prevent future problems**
 
+### 5. Production Monitoring
+* **Uptime Robot provides 24/7 availability monitoring**
+* **Public status pages build user trust and transparency**
+* **Automated alerts enable quick incident response**
+* **Performance metrics help identify optimization opportunities**
+
 ---
 
 ## 🚀 Future Improvements
@@ -402,7 +408,7 @@ spring.datasource.url=jdbc:postgresql://host:5432/db?sslmode=require
 ### Planned Enhancements
 1. **Authentication**: JWT-based authentication
 2. **Caching**: Redis integration for performance
-3. **Monitoring**: Prometheus metrics and Grafana
+3. **Advanced Monitoring**: Prometheus metrics and Grafana dashboards
 4. **Database Migrations**: Flyway for schema management
 5. **API Rate Limiting**: Prevent abuse and ensure fair usage
 
