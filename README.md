@@ -10,8 +10,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 <!-- RENDER_BADGE -->
-[![API Uptime](https://img.shields.io/uptimerobot/status/m800937975?style=for-the-badge&label=API%20Uptime)](https://stats.uptimerobot.com/etkFEsFW7F)
-
+[![API Uptime](https://img.shields.io/uptimerobot/status/m800937975-31ce25bfe5c7a16894e182d7?style=for-the-badge&label=API%20Uptime)](https://stats.uptimerobot.com/etkFEsFW7F)
 
 
 A **production-ready** Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues. Built as a showcase project demonstrating enterprise-grade engineering, database integration, comprehensive testing, and modern deployment practices.
