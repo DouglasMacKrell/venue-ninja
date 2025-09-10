@@ -31,6 +31,7 @@ A **production-ready** Java + Spring Boot REST API that delivers smart seat reco
 | 🧠 [Lessons Learned](./docs/lessons-learned.md) | Real-world deployment challenges and solutions |
 | ⚠️ [Known Issues](./docs/known-issues.md) | Current limitations and roadmap |
 | 📘 [Swagger Documentation](./docs/swagger-quickstart.md) | API documentation and testing |
+| 🎨 [Live Frontend](https://venueninja.netlify.app) | React/Vite frontend application |
 | 🛰️ [Live API](https://venue-ninja.onrender.com/venues) | Production API endpoint |
 | 📊 [API Status Page](https://stats.uptimerobot.com/etkFEsFW7F) | Real-time uptime monitoring |
 
