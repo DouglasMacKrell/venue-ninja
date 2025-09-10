@@ -5,7 +5,7 @@
 [![CI/CD Pipeline](https://github.com/DouglasMacKrell/venue-ninja/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/DouglasMacKrell/venue-ninja/actions)
 [![Code Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)](https://github.com/DouglasMacKrell/venue-ninja)
 [![Java](https://img.shields.io/badge/Java-17-orange?logo=java)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.3-brightgreen?logo=spring)](https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen?logo=spring)](https://spring.io/projects/spring-boot)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue?logo=postgresql)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -15,7 +15,7 @@
 
 A **production-ready** Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues. Built as a showcase project demonstrating enterprise-grade engineering, database integration, comprehensive testing, and modern deployment practices.
 
-**[Live API](https://venue-ninja.onrender.com/venues)** | **[Live API Docs (Swagger)](https://venue-ninja.onrender.com/swagger-ui/index.html)** | **[Database Connection Test](./src/test/java/com/venueninja/ExternalDatabaseConnectionTest.java)**
+**[Live Frontend](https://venueninja.netlify.app)** | **[Live API](https://venue-ninja.onrender.com/venues)** | **[Live API Docs (Swagger)](https://venue-ninja.onrender.com/swagger-ui/index.html)**
 
 ---
 
@@ -38,8 +38,9 @@ A **production-ready** Java + Spring Boot REST API that delivers smart seat reco
 
 ## 🎯 What It Does
 
-Venue Ninja is a **production-grade REST API** that provides intelligent seat recommendations for iconic venues. It features:
+Venue Ninja is a **full-stack application** with a React/Vite frontend and production-grade Spring Boot REST API that provides intelligent seat recommendations for iconic venues. It features:
 
+* **React/Vite Frontend** - Modern, responsive user interface deployed on Netlify
 * **Real PostgreSQL Database** - Persistent data storage with proper migrations
 * **Comprehensive Testing** - 64 tests covering unit, integration, performance, and error handling
 * **Production Deployment** - Dockerized and deployed on Render with environment-specific configurations
@@ -69,7 +70,7 @@ Venue Ninja is a **production-grade REST API** that provides intelligent seat re
 
 ### Backend
 * **Java 17** - Modern Java with latest features
-* **Spring Boot 3.5.3** - Production-ready framework
+* **Spring Boot 3.5.5** - Production-ready framework
 * **Spring Data JPA** - Database abstraction layer
 * **PostgreSQL** - Production database with SSL
 * **HikariCP** - High-performance connection pooling
@@ -162,7 +163,6 @@ CREATE TABLE seat_recommendation (
 * **Integration Tests** - Repository and database operations
 * **Performance Tests** - Load testing and response time validation
 * **Error Handling Tests** - Edge cases and security scenarios
-* **External DB Tests** - Production database connectivity
 
 ### Running Tests
 
@@ -171,7 +171,7 @@ CREATE TABLE seat_recommendation (
 ./mvnw test
 
 # Run specific test class
-./mvnw test -Dtest=ExternalDatabaseConnectionTest
+./mvnw test -Dtest=VenueServiceTest
 
 # Run with coverage
 ./mvnw test jacoco:report
@@ -183,7 +183,7 @@ CREATE TABLE seat_recommendation (
 ### Test Database
 * **Local Development** - H2 in-memory database
 * **Testing** - H2 with test data
-* **Production** - PostgreSQL on Render
+* **Production** - PostgreSQL on Render (monitored via Uptime Robot)
 
 ---
 
@@ -240,6 +240,7 @@ export DB_PASSWORD=your_password
 ```
 
 ### Access Points
+* **Frontend**: https://venueninja.netlify.app
 * **API**: http://localhost:8080/venues
 * **Swagger UI**: http://localhost:8080/swagger-ui/index.html
 * **Health Check**: http://localhost:8080/actuator/health
@@ -339,7 +340,7 @@ public class SecurityConfig {
 
 ### Technical Excellence
 * **Production Database** - Real PostgreSQL with proper migrations
-* **Comprehensive Testing** - Unit, integration, and external DB tests
+* **Comprehensive Testing** - Unit, integration, performance, and error handling tests
 * **Modern Java** - Java 17 with latest Spring Boot features
 * **Security Best Practices** - CORS, SSL, environment variables
 
