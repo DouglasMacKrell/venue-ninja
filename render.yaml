@@ -1,0 +1,40 @@
+# Venue Ninja — Render Blueprint (web service + Postgres)
+# Apply: https://dashboard.render.com/blueprints → New Blueprint → this repo → Apply
+# Then set GitHub secret RENDER_SERVICE_ID to the new web service ID (srv-…).
+
+databases:
+  - name: venue-ninja-db
+    plan: free
+    region: virginia
+
+services:
+  - type: web
+    name: venue-ninja
+    runtime: docker
+    plan: free
+    region: virginia
+    branch: main
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: DB_HOST
+        fromDatabase:
+          name: venue-ninja-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: venue-ninja-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: venue-ninja-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: venue-ninja-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: venue-ninja-db
+          property: password
