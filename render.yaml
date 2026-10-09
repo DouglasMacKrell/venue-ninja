@@ -1,6 +1,12 @@
 # Venue Ninja — Render Blueprint (web service + Postgres)
-# Apply: https://dashboard.render.com/blueprints → New Blueprint → this repo → Apply
-# Then set GitHub secret RENDER_SERVICE_ID to the new web service ID (srv-…).
+#
+# Historical reference: this file documents the original Render deployment layout
+# (Docker web service + managed PostgreSQL). It is retained for architecture and
+# deployment review. The current public portfolio frontend uses bundled static data
+# and does not require applying this blueprint or hosting this API.
+#
+# If you choose to apply it manually: Render Dashboard → Blueprints → this repo.
+# Applying provisions cloud resources; it is not part of the static demo workflow.
 
 databases:
   - name: venue-ninja-db

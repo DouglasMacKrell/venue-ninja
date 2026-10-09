@@ -1,6 +1,6 @@
 # CI/CD Pipeline - Venue Ninja 🔄
 
-This document outlines the streamlined CI/CD pipeline for Venue Ninja, covering GitHub Actions workflow, quality gates, and deployment automation.
+This document outlines the GitHub Actions CI pipeline for Venue Ninja: tests, build verification, and code quality checks. It does not deploy to Render automatically.
 
 ---
 
@@ -12,7 +12,7 @@ The CI/CD pipeline has been optimized for:
 - **Fast Feedback**: Complete pipeline runs in under 2 minutes
 - **Reliable Execution**: All tests pass consistently
 - **Quality Assurance**: Comprehensive code quality checks
-- **Production Ready**: Automated deployment to Render
+- **Build verification**: Produces a JAR artifact on each successful run
 
 ---
 
@@ -70,9 +70,9 @@ The CI/CD pipeline has been optimized for:
 - **Error Handling Tests**: Edge cases and security scenarios
 
 **Test Results**:
-- ✅ **64 tests passing**
-- ✅ **0 failures, 0 errors, 0 skipped**
-- ✅ **Fast execution** (< 1 minute)
+- ✅ Full suite under `src/test/java` (H2 / `test` profile)
+- ✅ JaCoCo coverage report generated in CI
+- ✅ Fast execution (typically under a few minutes including quality jobs)
 
 ### 3. Build Verification
 
@@ -142,10 +142,10 @@ jobs:
 ```yaml
 jobs:
   test:
-    # ... comprehensive test job
-  deploy:
+    # ... tests, coverage, package
+  code-quality:
     needs: test
-    # ... deploy job
+    # ... SpotBugs, Checkstyle
 ```
 
 **Benefits**:
@@ -193,21 +193,7 @@ jobs:
 #### ✅ Green Pipeline
 - All stages complete successfully
 - All quality gates pass
-- Ready for deployment
-
-### Production Monitoring
-
-#### Uptime Robot Integration
-- **Real-time API monitoring**: 24/7 availability tracking
-- **Public status page**: [https://stats.uptimerobot.com/etkFEsFW7F](https://stats.uptimerobot.com/etkFEsFW7F)
-- **Automated alerts**: Notifications for downtime events
-- **Performance metrics**: Response time and availability statistics
-
-#### Monitoring Benefits
-- ✅ **Transparency**: Public status page builds user trust
-- ✅ **Quick Detection**: Automated alerts for immediate response
-- ✅ **Performance Insights**: Response time tracking for optimization
-- ✅ **Reliability Assurance**: Continuous uptime monitoring
+- JAR artifact uploaded for the workflow run
 
 #### ⚠️ Warning Signs
 - Checkstyle violations
@@ -321,34 +307,9 @@ jobs:
 
 ---
 
-## 🔄 Deployment Integration
+## 🔄 Historical deployment (Render)
 
-### Render Deployment
-
-**Automatic Deployment**:
-- Successful CI pipeline triggers deployment
-- Render monitors GitHub repository
-- Automatic deployment on main branch pushes
-
-**Deployment Process**:
-1. **CI Pipeline**: All tests pass
-2. **GitHub Push**: Code pushed to main branch
-3. **Render Detection**: Render detects changes
-4. **Build Process**: Render builds Docker image
-5. **Deployment**: New version deployed automatically
-
-### Deployment Validation
-
-**Health Checks**:
-- Application startup validation
-- Database connectivity verification
-- API endpoint testing
-- SSL certificate validation
-
-**Rollback Strategy**:
-- Previous version available for rollback
-- Health check failures trigger rollback
-- Manual rollback capability
+Render deployment was originally documented in [deployment-notes.md](./deployment-notes.md) and [`render.yaml`](../render.yaml). **CI no longer triggers Render deploys.** Manual or blueprint-based deployment remains possible but is not required for the static portfolio frontend.
 
 ---
 
@@ -426,9 +387,9 @@ jobs:
 ### Current Achievements
 - ✅ **100% Pipeline Success Rate**: All recent runs successful
 - ✅ **Fast Execution**: Under 2 minutes total time
-- ✅ **Comprehensive Testing**: 64 tests covering all critical paths
-- ✅ **Quality Assurance**: Zero code style violations
-- ✅ **Production Deployment**: Automated deployment to Render
+- ✅ **Comprehensive Testing**: Full automated suite on each push/PR
+- ✅ **Quality Assurance**: Checkstyle and SpotBugs in CI
+- ✅ **Artifact build**: Runnable JAR produced when pipeline succeeds
 
 ### Quality Gates Met
 - ✅ **Code Quality**: Checkstyle compliance

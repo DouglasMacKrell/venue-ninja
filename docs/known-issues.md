@@ -10,13 +10,13 @@ While Venue Ninja has evolved into a **production-ready application** with Postg
 
 1. **❌ No Persistence Layer** → **✅ Real PostgreSQL Database**
    - Implemented JPA entities and repositories
-   - Added proper database migrations
+   - Added JPA entities, PostgreSQL, and `data.sql` seeding
    - Configured SSL connections for production
 
 2. **❌ No Validation/Error Coverage** → **✅ Comprehensive Testing**
    - Added unit tests for service layer
    - Implemented integration tests with H2 database
-   - Created external database connectivity tests
+   - Documented external PostgreSQL validation as a manual step (no dedicated test class in repo)
    - Added API endpoint testing
 
 3. **❌ No CORS/Frontend Headers** → **✅ Spring Security Configuration**
@@ -229,7 +229,7 @@ public ResponseEntity<ErrorResponse> handleVenueNotFound(VenueNotFoundException 
    - Frontend integration working smoothly
 
 2. **Testing & Quality**
-   - Comprehensive test suite (64 tests passing)
+   - Comprehensive automated test suite (see `src/test/java`)
    - Code quality checks passing
    - Performance tests validating response times
 
@@ -285,7 +285,7 @@ public ResponseEntity<ErrorResponse> handleVenueNotFound(VenueNotFoundException 
 ## 📈 Success Metrics
 
 ### Current Performance
-- **Test Coverage**: 64 tests passing
+- **Test Coverage**: Full suite in CI (H2 / `test` profile)
 - **Build Time**: < 2 minutes
 - **Deployment Time**: < 5 minutes
 - **API Response Time**: < 500ms average
@@ -306,7 +306,7 @@ public ResponseEntity<ErrorResponse> handleVenueNotFound(VenueNotFoundException 
 Venue Ninja has successfully evolved from a simple demo into a **production-ready application** with:
 
 - ✅ **Robust Architecture**: Clean separation of concerns
-- ✅ **Comprehensive Testing**: 64 tests covering all critical paths
+- ✅ **Comprehensive Testing**: Unit, integration, API, performance, and error-handling tests
 - ✅ **Production Deployment**: Successfully running on Render
 - ✅ **Security Best Practices**: SSL, environment variables, input validation
 - ✅ **CI/CD Pipeline**: Automated testing and quality checks

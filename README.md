@@ -1,112 +1,68 @@
 ![Venue Ninja Header](public/images/venue-ninja-headder.png)
 
-# Venue Ninja 🎟️🗡️
+# Venue Ninja
 
 [![CI/CD Pipeline](https://github.com/DouglasMacKrell/venue-ninja/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/DouglasMacKrell/venue-ninja/actions)
-[![Code Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)](https://github.com/DouglasMacKrell/venue-ninja)
 [![Java](https://img.shields.io/badge/Java-17-orange?logo=java)](https://openjdk.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen?logo=spring)](https://spring.io/projects/spring-boot)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue?logo=postgresql)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-<!-- RENDER_BADGE -->
-[![API Uptime](https://img.shields.io/uptimerobot/status/m800937975-31ce25bfe5c7a16894e182d7?style=for-the-badge&label=API%20Uptime)](https://stats.uptimerobot.com/etkFEsFW7F)
 
+Venue Ninja helps users explore **seat recommendations** for well-known venues (sections, categories, price hints, and tips). The **public portfolio demo** is a separate [React/Vite frontend](https://venueninja.netlify.app) that now **bundles the venue dataset client-side** so the live demo stays reliable without hosted database infrastructure.
 
-A **production-ready** Java + Spring Boot REST API that delivers smart seat recommendations for iconic venues. Built as a showcase project demonstrating enterprise-grade engineering, database integration, comprehensive testing, and modern deployment practices.
-
-**[Live Frontend](https://venueninja.netlify.app)** | **[Live API](https://venue-ninja.onrender.com/venues)** | **[Live API Docs (Swagger)](https://venue-ninja.onrender.com/swagger-ui/index.html)**
+**This repository** is the **original Java/Spring Boot/PostgreSQL backend**: a read-only REST API that loads the same canonical seed data from PostgreSQL. It remains here as an inspectable example of the full-stack architecture and backend engineering.
 
 ---
 
-## 🚀 QUICKLINKS
-
-| Link | Description |
-| :--- | :--- |
-| 🚀 [Deployment Guide](./docs/deployment-notes.md) | Complete deployment walkthrough with PostgreSQL |
-| 🔄 [CI/CD Pipeline](./docs/ci-cd-pipeline.md) | Streamlined GitHub Actions workflow and quality gates |
-| 🗄️ [Database Architecture](./docs/database-architecture.md) | PostgreSQL setup, migrations, and connection details |
-| 🧪 [Testing Strategy](./docs/testing-strategy.md) | Comprehensive test coverage and external DB testing |
-| 📝 [Project Pitch](./docs/project-pitch.md) | Architecture decisions and design philosophy |
-| 🧠 [Lessons Learned](./docs/lessons-learned.md) | Real-world deployment challenges and solutions |
-| ⚠️ [Known Issues](./docs/known-issues.md) | Current limitations and roadmap |
-| 📘 [Swagger Documentation](./docs/swagger-quickstart.md) | API documentation and testing |
-| 🎨 [Live Frontend](https://venueninja.netlify.app) | React/Vite frontend application |
-| 🛰️ [Live API](https://venue-ninja.onrender.com/venues) | Production API endpoint |
-| 📊 [API Status Page](https://stats.uptimerobot.com/etkFEsFW7F) | Real-time uptime monitoring |
-
----
-
-## 🎯 What It Does
-
-Venue Ninja is a **full-stack application** with a React/Vite frontend and production-grade Spring Boot REST API that provides intelligent seat recommendations for iconic venues. It features:
-
-* **React/Vite Frontend** - Modern, responsive user interface deployed on Netlify
-* **Real PostgreSQL Database** - Persistent data storage with proper migrations
-* **Comprehensive Testing** - 64 tests covering unit, integration, performance, and error handling
-* **Production Deployment** - Dockerized and deployed on Render with environment-specific configurations
-* **CI/CD Pipeline** - Streamlined GitHub Actions workflow with quality gates
-* **API Documentation** - Auto-generated Swagger/OpenAPI documentation
-* **Security** - Spring Security with CORS configuration for frontend integration
-* **Monitoring** - Structured logging, health checks, and Uptime Robot integration
-
----
-
-## 🏗️ Architecture Overview
+## Original architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Spring Boot   │    │   PostgreSQL    │
-│   (React/Vite)  │◄──►│   REST API      │◄──►│   Database      │
-│                 │    │                 │    │                 │
-│ • Venue Select  │    │ • Controllers   │    │ • Venues        │
-│ • Seat Display  │    │ • Services      │    │ • Seat Recs     │
-│ • Real-time UI  │    │ • Repositories  │    │ • Migrations    │
+│  React/Vite     │    │  Spring Boot    │    │  PostgreSQL     │
+│  frontend       │───►│  REST API       │───►│  (seed data)    │
+│  (separate repo)│    │  (this repo)    │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
----
-
-## 🧱 Tech Stack
-
-### Backend
-* **Java 17** - Modern Java with latest features
-* **Spring Boot 3.5.5** - Production-ready framework
-* **Spring Data JPA** - Database abstraction layer
-* **PostgreSQL** - Production database with SSL
-* **HikariCP** - High-performance connection pooling
-* **Spring Security** - Authentication and CORS handling
-
-### Testing
-* **JUnit 5** - Unit and integration testing
-* **H2 Database** - In-memory testing database
-* **Spring Boot Test** - Application context testing
-* **External DB Tests** - Production database connectivity validation
-
-### DevOps
-* **Docker** - Containerized deployment
-* **Render** - Cloud hosting platform
-* **Maven** - Build and dependency management
-* **GitHub Actions** - CI/CD pipeline (✅ fully operational)
-
-### Documentation
-* **Swagger/OpenAPI 3** - Auto-generated API docs
-* **Spring Boot Actuator** - Health checks and monitoring
-* **Comprehensive README** - Project documentation
+The hosted frontend **no longer calls this API** for the portfolio demo. The backend implementation is preserved to demonstrate controllers, services, JPA, Hibernate, PostgreSQL integration, tests, and Docker packaging.
 
 ---
 
-## 🔗 API Endpoints
+## What this backend demonstrates
 
-### Core Endpoints
+- **Spring Boot 3.5.5** on **Java 17** with layered design (controller → service → repository)
+- **Spring Data JPA** and **Hibernate** against **PostgreSQL** (HikariCP connection pool in the `production` profile)
+- **Read-only REST API** — no write endpoints; dataset is seeded, not user-generated
+- **Spring Security** with CORS (frontend origins) and permissive read access for the demo API
+- **springdoc OpenAPI** — Swagger UI when running locally
+- **Spring Boot Actuator** — health and metrics endpoints
+- **Automated tests** (H2 in the `test` profile) plus **Checkstyle**, **SpotBugs**, and **JaCoCo** in CI
+- **Multi-stage Dockerfile** for containerized runs with the `production` profile
 
-| Method | Endpoint | Description | Example |
-|--------|----------|-------------|---------|
-| `GET` | `/venues` | List all venues | [Live Demo](https://venue-ninja.onrender.com/venues) |
-| `GET` | `/venues/{id}` | Get venue with seat recommendations | [MSG Example](https://venue-ninja.onrender.com/venues/msg) |
-| `GET` | `/swagger-ui/index.html` | Interactive API documentation | [Swagger UI](https://venue-ninja.onrender.com/swagger-ui/index.html) |
+---
 
-### Example Response
+## API endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/venues` | All venues with nested seat recommendations |
+| `GET` | `/venues/{id}` | One venue by string id (e.g. `msg`) |
+
+Additional endpoints useful when running locally:
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/swagger-ui/index.html` | Interactive API docs |
+| `GET` | `/actuator/health` | Actuator health (includes DB when configured) |
+| `GET` | `/health`, `/health/ready`, `/health/live` | Custom health-style endpoints |
+
+The API exposes **only GET** handlers for venue data. There are no endpoints that persist user changes in production use.
+
+**Note:** A missing venue id currently surfaces as a `RuntimeException` handled as **HTTP 500**, not 404. That behavior is unchanged in this repository; see [Known issues](./docs/known-issues.md) for other limitations.
+
+### Example response shape
+
+JSON uses camelCase field names (Jackson). Recommendations match the seed data in [`data.sql`](src/main/resources/data.sql):
 
 ```json
 {
@@ -119,287 +75,154 @@ Venue Ninja is a **full-stack application** with a React/Vite frontend and produ
       "reason": "Best resale value & view of stage",
       "estimatedPrice": "$250",
       "tip": "Avoid row 20+ due to rigging obstruction"
-    },
-    {
-      "section": "200",
-      "category": "Upper Bowl",
-      "reason": "Great value for price-conscious fans",
-      "estimatedPrice": "$75",
-      "tip": "Bring binoculars for optimal viewing"
     }
   ]
 }
 ```
 
----
-
-## 🗄️ Database Schema
-
-```sql
--- Venues table
-CREATE TABLE venue (
-    id VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
-
--- Seat recommendations table
-CREATE TABLE seat_recommendation (
-    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
-    venue_id VARCHAR(255) NOT NULL,
-    section VARCHAR(255),
-    category VARCHAR(255),
-    reason VARCHAR(255),
-    estimated_price VARCHAR(255),
-    tip VARCHAR(255),
-    FOREIGN KEY (venue_id) REFERENCES venue(id)
-);
-```
+Each recommendation may also include a numeric `id` assigned by the database on insert.
 
 ---
 
-## 🧪 Testing Strategy
+## Domain model
 
-### Test Coverage
-* **Unit Tests** - Service layer business logic
-* **Integration Tests** - Repository and database operations
-* **Performance Tests** - Load testing and response time validation
-* **Error Handling Tests** - Edge cases and security scenarios
+- **`Venue`** — `@Entity` with string `id` (primary key) and `name`.
+- **`SeatRecommendation`** — `@Entity` with generated `Long` id, plus `section`, `category`, `reason`, `estimatedPrice`, and `tip`.
+- **Relationship** — `Venue` `@OneToMany` → `SeatRecommendation` via `venue_id` (`@JoinColumn` on the venue side).
 
-### Running Tests
-
-```bash
-# Run all tests (64 tests)
-./mvnw test
-
-# Run specific test class
-./mvnw test -Dtest=VenueServiceTest
-
-# Run with coverage
-./mvnw test jacoco:report
-
-# Check code quality
-./mvnw checkstyle:check
-```
-
-### Test Database
-* **Local Development** - H2 in-memory database
-* **Testing** - H2 with test data
-* **Production** - PostgreSQL on Render (monitored via Uptime Robot)
+There is **no separate DTO layer**; entities are returned directly as JSON.
 
 ---
 
-## 🔄 CI/CD Pipeline
+## Data and database initialization
 
-### Current Status: ✅ **FULLY OPERATIONAL**
+**Canonical dataset:** [`src/main/resources/data.sql`](src/main/resources/data.sql) — 10 venues, 3 seat recommendations each. This file is the source of truth for seed content in this backend.
 
-The streamlined CI/CD pipeline runs in under 2 minutes and includes:
+**Schema and seeding (default and `production` profiles):**
 
-* **Code Quality Checks** - Checkstyle validation
-* **Comprehensive Testing** - 64 tests covering all critical paths
-* **Build Verification** - Maven compilation and packaging
-* **Quality Gates** - All checks must pass for deployment
+1. `spring.jpa.hibernate.ddl-auto=create` — Hibernate creates the schema from entities on startup (data is not preserved across restarts).
+2. `spring.jpa.defer-datasource-initialization=true` and `spring.sql.init.mode=always` — Spring runs `data.sql` after schema creation to insert seed rows.
 
-### Pipeline Stages
-1. **Checkstyle** - Code formatting and style compliance
-2. **Testing** - Unit, integration, performance, and error handling tests
-3. **Build** - Package creation and dependency resolution
+There is **no Flyway/Liquibase** (or other migration tool) in this repository; schema lifecycle is Hibernate `create` plus SQL init.
 
-### Recent Improvements
-* ✅ **Simplified Workflow** - Removed unnecessary Docker tests
-* ✅ **Fixed Checkstyle** - Proper XML configuration structure
-* ✅ **Optimized Execution** - Fast feedback under 2 minutes
-* ✅ **Reliable Results** - Consistent test execution
-
-For detailed pipeline information, see [CI/CD Pipeline Documentation](./docs/ci-cd-pipeline.md).
+**Tests** use the `test` profile with **H2** in-memory (`ddl-auto=create-drop`) and the same `data.sql` init pattern; test classes typically clear or replace data in setup.
 
 ---
 
-## 🚀 Local Development
+## Local development
 
 ### Prerequisites
-* Java 17+
-* Maven 3.6+
-* PostgreSQL (optional for local dev)
 
-### Quick Start
+- Java 17+
+- Maven (wrapper included)
+- **PostgreSQL** for running the API locally (the default application profile does not configure an embedded database)
+
+### Run with PostgreSQL
 
 ```bash
-# Clone repository
 git clone https://github.com/DouglasMacKrell/venue-ninja.git
 cd venue-ninja
 
-# Run with Maven (uses H2 by default)
-./mvnw spring-boot:run
-
-# Or run with PostgreSQL
 export DB_HOST=localhost
 export DB_PORT=5432
 export DB_NAME=venueninja
 export DB_USER=postgres
 export DB_PASSWORD=your_password
+
 ./mvnw spring-boot:run -Dspring.profiles.active=production
 ```
 
-### Access Points
-* **Frontend**: https://venueninja.netlify.app
-* **API**: http://localhost:8080/venues
-* **Swagger UI**: http://localhost:8080/swagger-ui/index.html
-* **Health Check**: http://localhost:8080/actuator/health
+Create an empty database (e.g. `venueninja`) before starting; Hibernate and `data.sql` will populate it on each run.
+
+### Local URLs
+
+- API: http://localhost:8080/venues
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- Actuator health: http://localhost:8080/actuator/health
+
+### Environment variables (`production` profile)
+
+| Variable | Purpose |
+|----------|---------|
+| `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` | PostgreSQL connection (used by Render blueprint) |
+| `DATABASE_URL` | Optional full JDBC URL override (default template includes `sslmode=require`) |
+| `PORT` | HTTP port (default `8080`) |
+| `SPRING_PROFILES_ACTIVE=production` | Loads [`application-production.properties`](src/main/resources/application-production.properties) |
+
+Do not commit real passwords; use environment variables or local exports only.
 
 ---
 
-## 🐳 Production Deployment
-
-### Environment Variables (Render)
+## Docker
 
 ```bash
-# Database Configuration
-DB_HOST=your_database_host_here
-DB_PORT=5432
-DB_NAME=venue_ninja_db
-DB_USER=venue_ninja_db_user
-DB_PASSWORD=your_actual_password_here
-
-# Or use single DATABASE_URL
-DATABASE_URL=jdbc:postgresql://your_host:5432/your_database?sslmode=require
-```
-
-### Docker Deployment
-
-```bash
-# Build image
 docker build -t venue-ninja .
 
-# Run container
 docker run -p 8080:8080 \
   -e DB_HOST=your_host \
   -e DB_PORT=5432 \
-  -e DB_NAME=your_db \
+  -e DB_NAME=venueninja \
   -e DB_USER=your_user \
   -e DB_PASSWORD=your_password \
   venue-ninja
 ```
 
----
-
-## 📊 Performance & Monitoring
-
-### Connection Pooling
-* **HikariCP** - High-performance connection pool
-* **SSL Mode** - Secure database connections
-* **Connection Timeout** - 30 seconds
-* **Max Pool Size** - 10 connections
-
-### Health Checks
-* **Database Connectivity** - `/actuator/health`
-* **Application Status** - `/actuator/info`
-* **Custom Health Indicators** - Database and external service checks
-
-### Logging
-* **Structured Logging** - JSON format in production
-* **Log Levels** - Configurable per environment
-* **Performance Monitoring** - SQL query logging (development only)
+The image starts the app with `-Dspring.profiles.active=production` and expects a reachable PostgreSQL instance.
 
 ---
 
-## 🔒 Security Features
+## Tests and quality tooling
 
-### CORS Configuration
-```java
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig {
-    // Configured for frontend integration
-    // Supports localhost:5175 and production domains
-}
+```bash
+# Unit, integration, API, performance, error-handling, and regression tests (H2)
+./mvnw clean test
+
+# Coverage report (JaCoCo)
+./mvnw test jacoco:report
+
+# Style and static analysis (also run in CI)
+./mvnw checkstyle:check
+./mvnw spotbugs:check
 ```
 
-### Database Security
-* **SSL Connections** - All production database connections use SSL
-* **Environment Variables** - Sensitive data stored securely
-* **Connection Pooling** - Prevents connection exhaustion
+Test classes live under `src/test/java/com/venueninja/` (e.g. `VenueServiceTest`, `VenueRepositoryTest`, `VenueControllerTest`, `ErrorHandlingTest`, `PerformanceTest`, `RegressionTestSuite`).
+
+CI runs tests, JaCoCo, package build, SpotBugs, and Checkstyle on pushes and pull requests to `main` — see [CI/CD pipeline](./docs/ci-cd-pipeline.md).
 
 ---
 
-## 📈 Scalability Considerations
+## Portfolio demo vs. this repository
 
-### Current Architecture
-* **Stateless Design** - Horizontal scaling ready
-* **Connection Pooling** - Efficient database resource usage
-* **Caching Ready** - Redis integration possible
-* **Load Balancer Ready** - Multiple instances supported
+The original application used **React → Spring Boot → PostgreSQL**. Because the demo dataset is **small and read-only**, the **current hosted frontend** loads that data **statically** so the portfolio does not depend on a long-lived Render database or API.
 
-### Future Enhancements
-* **Redis Caching** - Frequently accessed data
-* **Database Sharding** - Multi-tenant support
-* **API Rate Limiting** - Protect against abuse
-* **CDN Integration** - Static content delivery
+This repo **keeps the original backend** so reviewers can read the Java implementation, run it against PostgreSQL locally, and see how the API and persistence layer were built.
+
+Historical Render deployment notes and the [`render.yaml`](render.yaml) blueprint are **reference only** — not required for the static public demo. See [Deployment notes](./docs/deployment-notes.md).
 
 ---
 
-## 🎯 Interview Highlights
+## Documentation
 
-### Technical Excellence
-* **Production Database** - Real PostgreSQL with proper migrations
-* **Comprehensive Testing** - Unit, integration, performance, and error handling tests
-* **Modern Java** - Java 17 with latest Spring Boot features
-* **Security Best Practices** - CORS, SSL, environment variables
-
-### Deployment Prowess
-* **Docker Containerization** - Reproducible deployments
-* **Cloud Deployment** - Render with PostgreSQL
-* **Environment Management** - Profile-based configuration
-* **Monitoring Ready** - Health checks and logging
-
-### Code Quality
-* **Clean Architecture** - Separation of concerns
-* **SOLID Principles** - Maintainable and extensible code
-* **Documentation** - Comprehensive API docs and guides
-* **Error Handling** - Graceful failure management
+| Document | Description |
+|----------|-------------|
+| [Deployment notes](./docs/deployment-notes.md) | Historical Render + PostgreSQL deployment (reference) |
+| [Database architecture](./docs/database-architecture.md) | Schema, connection settings, init behavior |
+| [Testing strategy](./docs/testing-strategy.md) | Test layers and execution |
+| [CI/CD pipeline](./docs/ci-cd-pipeline.md) | GitHub Actions workflow |
+| [Known issues](./docs/known-issues.md) | Limitations and possible future work |
+| [Swagger quickstart](./docs/swagger-quickstart.md) | Local API documentation |
 
 ---
 
-## 🧠 Key Lessons Learned
+## Author
 
-### Database Deployment Challenges
-* **URL Encoding Issues** - Special characters in passwords
-* **Environment Variable Management** - Individual vs. single URL approach
-* **SSL Configuration** - Production database security requirements
-* **Connection Pooling** - Performance optimization for production
-
-### Spring Boot Best Practices
-* **Profile-based Configuration** - Environment-specific settings
-* **External Database Testing** - Validate production connectivity
-* **Security Configuration** - Proper CORS and authentication setup
-* **Health Monitoring** - Application and database health checks
+**Douglas MacKrell**  
+[LinkedIn](https://linkedin.com/in/douglasmackrell) · [GitHub](https://github.com/DouglasMacKrell)
 
 ---
 
-## 👤 Author
+## Additional resources
 
-**Douglas MacKrell**
-📍 NYC / EST
-🔗 [linkedin.com/in/douglasmackrell](https://linkedin.com/in/douglasmackrell)
-🐙 [github.com/DouglasMacKrell](https://github.com/DouglasMacKrell)
-
----
-
-## 🥷 Final Word
-
-This project demonstrates **enterprise-grade engineering** from concept to production deployment. It showcases:
-
-* **Rapid Development** - From zero to production in 48 hours
-* **Production Readiness** - Real database, comprehensive testing, security
-* **Modern Practices** - Docker, cloud deployment, API documentation
-* **Problem Solving** - Real-world deployment challenges and solutions
-
-**Venue Ninja** isn't just a demo project—it's a **production-ready API** that could serve real users today. 🚀
-
----
-
-## 📚 Additional Resources
-
-* [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-* [PostgreSQL Documentation](https://www.postgresql.org/docs/)
-* [Render Deployment Guide](https://render.com/docs)
-* [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [PostgreSQL documentation](https://www.postgresql.org/docs/)
+- [Docker documentation](https://docs.docker.com/)

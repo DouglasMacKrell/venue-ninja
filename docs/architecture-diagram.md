@@ -17,7 +17,7 @@ This document provides comprehensive architecture diagrams for the Venue Ninja a
 │  │             │    │             │    │             │        │
 │  │ • React/Vue │    │ • Controllers│   │ • Venues    │        │
 │  │ • Real-time │    │ • Services  │   │ • Seat Recs │        │
-│  │ • Responsive│    │ • Repositories│  │ • Migrations│        │
+│  │ • Responsive│    │ • Repositories│  │ • data.sql  │        │
 │  └─────────────┘    └─────────────┘    └─────────────┘        │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -64,7 +64,7 @@ This document provides comprehensive architecture diagrams for the Venue Ninja a
 │  │                 │  │                 │  │             │ │
 │  │ • CRUD Operations│  │ • Entity Mapping│  │ • Connection│ │
 │  │ • Query Methods │  │ • Schema Gen    │  │ • Pooling   │ │
-│  │ • Data Access   │  │ • Migrations    │  │ • SSL Config│ │
+│  │ • Data Access   │  │ • data.sql seed │  │ • SSL Config│ │
 │  └─────────────────┘  └─────────────────┘  └─────────────┘ │
 └─────────────────────────────────────────────────────────────┘
                                 │

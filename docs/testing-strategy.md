@@ -593,80 +593,9 @@ spring.jpa.properties.hibernate.format_sql=false
 
 ---
 
-## 🌐 External Database Tests
+## 🌐 External PostgreSQL connectivity
 
-### Production Database Connectivity
-
-```java
-@SpringBootTest
-@ActiveProfiles("test")
-class ExternalDatabaseConnectionTest {
-
-    @Test
-    void testExternalDatabaseConnection() throws SQLException {
-        // Test connection to Render PostgreSQL database
-        String url = System.getenv("DATABASE_URL");
-        String user = System.getenv("DB_USER");
-        String password = System.getenv("DB_PASSWORD");
-        
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            // Assert connection is valid
-            assertThat(connection).isNotNull();
-            assertThat(connection.isClosed()).isFalse();
-            
-            // Test a simple query
-            try (var resultSet = connection.createStatement().executeQuery("SELECT 1")) {
-                assertThat(resultSet.next()).isTrue();
-                assertThat(resultSet.getInt(1)).isEqualTo(1);
-            }
-            
-            System.out.println("✅ External database connection successful!");
-        } catch (SQLException e) {
-            System.err.println("❌ External database connection failed: " + e.getMessage());
-            throw e;
-        }
-    }
-
-    @Test
-    void testEnvironmentVariables() {
-        // Test that environment variables are accessible
-        String dbHost = System.getenv("DB_HOST");
-        String dbPort = System.getenv("DB_PORT");
-        String dbName = System.getenv("DB_NAME");
-        String dbUser = System.getenv("DB_USER");
-        String dbPassword = System.getenv("DB_PASSWORD");
-        
-        // Log environment variable status
-        System.out.println("Environment variables:");
-        System.out.println("DB_HOST: " + (dbHost != null ? dbHost : "NOT SET"));
-        System.out.println("DB_PORT: " + (dbPort != null ? dbPort : "NOT SET"));
-        System.out.println("DB_NAME: " + (dbName != null ? dbName : "NOT SET"));
-        System.out.println("DB_USER: " + (dbUser != null ? dbUser : "NOT SET"));
-        System.out.println("DB_PASSWORD: " + (dbPassword != null ? "SET" : "NOT SET"));
-        
-        // This test will pass locally but fail in Render if env vars aren't set
-        if (dbHost == null || dbPort == null || dbName == null || dbUser == null || dbPassword == null) {
-            System.out.println("⚠️  Some environment variables are not set - this will cause issues in production");
-        }
-    }
-}
-```
-
-### SSL Configuration Testing
-
-```java
-@Test
-void testSSLConnection() throws SQLException {
-    // Test SSL-enabled connection
-    String url = "jdbc:postgresql://host:5432/db?sslmode=require";
-    
-    try (Connection connection = DriverManager.getConnection(url, user, password)) {
-        // Verify SSL is enabled
-        DatabaseMetaData metaData = connection.getMetaData();
-        // Additional SSL verification logic here
-    }
-}
-```
+The repository **does not include** an `ExternalDatabaseConnectionTest` class. Automated tests run against **H2** under the `test` profile. To validate PostgreSQL manually, run the application with `spring.profiles.active=production` and appropriate `DB_*` or `DATABASE_URL` variables, then check `/actuator/health` and `GET /venues`.
 
 ---
 
@@ -747,9 +676,6 @@ class VenueControllerIntegrationTest {
 
 # Run regression tests only
 ./mvnw test -Dtest=RegressionTestSuite
-
-# Run external database tests only
-./mvnw test -Dtest=ExternalDatabaseConnectionTest
 
 # Run with coverage
 ./mvnw test jacoco:report

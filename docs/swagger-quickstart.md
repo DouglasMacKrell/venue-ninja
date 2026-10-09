@@ -9,7 +9,7 @@ This guide helps you get Swagger/OpenAPI up and running in the Venue Ninja Sprin
 * Auto-generated OpenAPI docs from Spring annotations
 * Interactive Swagger UI at `/swagger-ui/index.html`
 * Zero manual spec writing needed
-* 🚀 Deployed live at [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+* Run locally at `http://localhost:8080/swagger-ui/index.html` when the API is started with PostgreSQL (see [README](../README.md))
 
 ---
 
@@ -40,7 +40,7 @@ It creates an OpenAPI spec behind the scenes and exposes it at these endpoints:
 
 * `/v3/api-docs` → raw JSON spec
 * `/swagger-ui/index.html` → visual documentation
-* ✅ Live demo: [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
+* Local UI: `http://localhost:8080/swagger-ui/index.html`
 
 ---
 
@@ -105,7 +105,6 @@ You can hide endpoints or add detailed `@Schema` descriptions per field to impre
 ## 📍 Example Links
 
 * Local: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
-* Live: [https://venue-ninja.onrender.com/swagger-ui/index.html](https://venue-ninja.onrender.com/swagger-ui/index.html)
 
 ---
 

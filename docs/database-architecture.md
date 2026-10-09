@@ -13,7 +13,7 @@ This document outlines the database architecture, migration strategy, and connec
 │                 │    │   Pool          │    │                 │
 │ • JPA Entities  │    │ • SSL Mode      │    │ • Venues        │
 │ • Repositories  │    │ • Pool Size: 10 │    │ • Seat Recs     │
-│ • Services      │    │ • Timeout: 30s  │    │ • Migrations    │
+│ • Services      │    │ • Timeout: 30s  │    │ • data.sql seed │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
@@ -60,7 +60,9 @@ CREATE TABLE seat_recommendation (
 
 ---
 
-## 🔄 Migration Strategy
+## 🔄 Schema and seed data (current implementation)
+
+Production and default profiles use **Hibernate** `spring.jpa.hibernate.ddl-auto=create` plus **`data.sql`** (`spring.sql.init.mode=always`, with deferred initialization). There is **no Flyway/Liquibase** migration tool in the repository. The subsections below describe how the design evolved; the live approach is entity-driven schema creation and SQL seeding.
 
 ### Development Evolution
 
@@ -187,14 +189,7 @@ class VenueRepositoryTest {
 }
 ```
 
-### External Database Tests (PostgreSQL)
-```java
-@Test
-void testExternalDatabaseConnection() throws SQLException {
-    // Tests actual production database connectivity
-    // Validates environment variables and SSL configuration
-}
-```
+Automated tests use the **`test` profile with H2**; there is no checked-in test class that connects to a remote PostgreSQL instance.
 
 ---
 

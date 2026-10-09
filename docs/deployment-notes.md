@@ -1,6 +1,8 @@
 # Deployment Notes for Venue Ninja 🚀
 
-This comprehensive guide walks through deploying the **production-ready** Venue Ninja Spring Boot backend to **Render** with PostgreSQL database integration.
+> **Historical reference:** This guide describes how the Venue Ninja Spring Boot backend was originally deployed to **Render** with PostgreSQL. The public portfolio frontend now bundles venue data statically and does not require this API to be hosted. Keep this document for deployment architecture context; see the [README](../README.md) for the current portfolio setup.
+
+This guide walks through the original Render deployment with PostgreSQL database integration.
 
 ---
 
@@ -9,10 +11,10 @@ This comprehensive guide walks through deploying the **production-ready** Venue 
 Venue Ninja has evolved from a simple in-memory demo to a **production-grade application** with:
 
 - ✅ **Real PostgreSQL Database** - Persistent data storage
-- ✅ **Comprehensive Testing** - Unit, integration, and external DB tests
+- ✅ **Comprehensive Testing** - Unit, integration, and API tests (H2 in CI)
 - ✅ **Production Security** - SSL connections, environment variables
 - ✅ **Modern DevOps** - Docker containerization, cloud deployment
-- ✅ **Monitoring Ready** - Health checks, structured logging, Uptime Robot integration
+- ✅ **Monitoring Ready** - Health checks and structured logging
 - ✅ **CI/CD Pipeline** - Automated testing and quality checks
 
 ---
@@ -167,7 +169,7 @@ Click **Create Web Service** and wait for the build to complete.
 
 Visit the health endpoint to verify the application is running:
 ```
-https://venue-ninja.onrender.com/actuator/health
+https://your-service.onrender.com/actuator/health
 ```
 
 Expected response:
@@ -184,43 +186,15 @@ Expected response:
 
 ### 2. API Endpoints
 
-Test the core endpoints:
+Test the core endpoints on your deployed host (when running this backend):
 
-- **All Venues**: https://venue-ninja.onrender.com/venues
-- **Specific Venue**: https://venue-ninja.onrender.com/venues/msg
-- **Swagger UI**: https://venue-ninja.onrender.com/swagger-ui/index.html
+- **All Venues**: `GET /venues`
+- **Specific Venue**: `GET /venues/msg`
+- **Swagger UI**: `/swagger-ui/index.html`
 
-### 3. Database Connectivity Test
+### 3. Validate connectivity
 
-Run the external database test locally:
-```bash
-./mvnw test -Dtest=ExternalDatabaseConnectionTest
-```
-
-This test validates:
-
-### 4. Uptime Robot Monitoring
-
-The application is monitored using **Uptime Robot** for production uptime tracking:
-
-- **Monitor ID**: `m800937975-31ce25bfe5c7a16894e182d7`
-- **Status Page**: [https://stats.uptimerobot.com/etkFEsFW7F](https://stats.uptimerobot.com/etkFEsFW7F)
-- **Badge**: Displayed in README showing real-time API status
-
-**Monitoring Features**:
-- ✅ **Real-time uptime tracking** - 24/7 API availability monitoring
-- ✅ **Public status page** - Transparent uptime reporting
-- ✅ **Automated alerts** - Notifications for downtime events
-- ✅ **Performance metrics** - Response time and availability statistics
-
-**Integration**:
-- The Uptime Robot badge in the README automatically updates based on API status
-- Public status page provides transparency for API users
-- Monitoring helps ensure production reliability and quick issue detection
-- ✅ Database connectivity
-- ✅ SSL configuration
-- ✅ Environment variable parsing
-- ✅ Connection pool settings
+Confirm `/actuator/health` reports the database as UP when PostgreSQL credentials and network access are correct. Automated tests in this repository use H2; they do not include a separate external PostgreSQL test class.
 
 ---
 
@@ -342,9 +316,6 @@ The application includes:
 ### Debug Commands
 
 ```bash
-# Test database connectivity
-./mvnw test -Dtest=ExternalDatabaseConnectionTest
-
 # Run all tests locally
 ./mvnw clean test
 
